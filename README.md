@@ -1,34 +1,11 @@
 /**
- * La-Vita!!! イベントまとめページ
+ * La-Vita!!! イベントまとめページ（画像なしバージョン）
  * Design: Coastal Editorial — Sunset Gold × Deep Navy × Warm White
  * Target: NAMIMATI学生団体の仲間向け企画レポートページ
  * Source: La-Vita!!!企画まとめ.pdf (2024.7.7 鎌倉 材木座海岸)
  */
 
 import { useEffect, useRef, useState } from "react";
-
-// ─── 画像URL（manus-upload-file --webdev でアップロード済み） ───────────────
-const IMAGES = {
-  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663782321279/HKZUNetSZ9AVRcQT97cpf2/logo_lavita-h2rd4aPjkHYvZXbz3tFAZw.webp",
-  heroBg: "https://d2xsxph8kpxj0f.cloudfront.net/310519663782321279/HKZUNetSZ9AVRcQT97cpf2/hero_bg-Q2Y4sRt8w9MRzgj3yqm8Qf.webp",
-  heroGroup: "/manus-storage/photo_hero_group_47059afe.jpg",
-  mammababyProduct: "/manus-storage/photo_mammababy_product_0e4e3f63.jpg",
-  clean1: "/manus-storage/photo_clean_1_1546720f.jpg",
-  clean2: "/manus-storage/photo_clean_2_1f409fc6.jpg",
-  clean3: "/manus-storage/photo_clean_3_48d953dd.jpg",
-  volley1: "/manus-storage/photo_volley_1_7fc44cc4.jpg",
-  volley2: "/manus-storage/photo_volley_2_d9af247c.jpg",
-  volley3: "/manus-storage/photo_volley_3_bd0cd538.jpg",
-  drinks1: "/manus-storage/photo_drinks_1_69aaa9ea.jpg",
-  drinks2: "/manus-storage/photo_drinks_2_3ca8285a.jpg",
-  music: "/manus-storage/photo_music_c9ff9fbe.jpg",
-  candle: "/manus-storage/photo_candle_9656b192.jpg",
-  sticker1: "/manus-storage/photo_sticker_1_c1966ca4.jpg",
-  sticker2: "/manus-storage/photo_sticker_2_29fcede4.jpg",
-  stickerDesigns: "/manus-storage/photo_sticker_designs_676132ca.jpg",
-  sponsorUv: "/manus-storage/photo_sponsor_uv_30322675.jpg",
-  sponsorDrinks: "/manus-storage/photo_sponsor_drinks_4342a50e.jpg",
-};
 
 // ─── スクロールアニメーション用フック ─────────────────────────────────────
 function useFadeInUp() {
@@ -83,7 +60,6 @@ function Nav() {
     >
       <div className="container flex items-center justify-between py-3">
         <a href="#top" className="flex items-center gap-2">
-          <img src={IMAGES.logo} alt="La-Vita logo" className="w-9 h-9" />
           <span
             className="font-bold text-lg tracking-wide"
             style={{
@@ -153,26 +129,9 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex items-end overflow-hidden"
+      className="relative min-h-[70vh] flex items-end overflow-hidden"
       style={{ background: "#1A2E3B" }}
     >
-      {/* 背景画像 */}
-      <div className="absolute inset-0">
-        <img
-          src={IMAGES.heroBg}
-          alt="材木座海岸の夕暮れ"
-          className="w-full h-full object-cover"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(26,46,59,0.92) 0%, rgba(26,46,59,0.5) 50%, rgba(26,46,59,0.15) 100%)",
-          }}
-        />
-      </div>
-
-      {/* コンテンツ */}
       <div className="relative z-10 container pb-20 pt-32">
         <div className="max-w-2xl">
           {/* イベントタグ */}
@@ -299,12 +258,11 @@ function ConceptSection() {
       className="py-20 md:py-28"
       style={{ background: "#FBF8F3" }}
     >
-      <div className="container">
+      <div className="container max-w-3xlmx-auto">
         <div
           ref={ref}
-          className="fade-in-up grid md:grid-cols-2 gap-12 items-center"
+          className="fade-in-up"
         >
-          {/* テキスト */}
           <div>
             <SectionHeader en="Concept" ja="La-Vita!!!とは" />
             <p
@@ -326,7 +284,7 @@ function ConceptSection() {
               提供したいという願いから企画されました。
             </p>
             <div
-              className="mt-6 p-4 rounded-lg border-l-4"
+              className="mt-6 p-4 rounded-lg border-l-4 flex justify-between items-center"
               style={{
                 borderColor: "#E8A04A",
                 background: "rgba(232,160,74,0.08)",
@@ -341,29 +299,16 @@ function ConceptSection() {
               >
                 "Enjoy La-Vita!!! Have fun!!!"
               </p>
-            </div>
-          </div>
-
-          {/* 集合写真 */}
-          <div className="relative">
-            <img
-              src={IMAGES.heroGroup}
-              alt="La-Vita!!!参加者の集合写真"
-              className="w-full rounded-2xl object-cover photo-card"
-              style={{
-                aspectRatio: "4/3",
-                boxShadow: "0 20px 60px rgba(26,46,59,0.25)",
-              }}
-            />
-            <div
-              className="absolute -bottom-4 -right-4 px-4 py-2 rounded-xl text-sm font-bold"
-              style={{
-                background: "#1A2E3B",
-                color: "#E8A04A",
-                fontFamily: "'Noto Serif JP', serif",
-              }}
-            >
-              50名以上が参加
+              <div
+                className="px-3 py-1 rounded-full text-xs font-bold"
+                style={{
+                  background: "#1A2E3B",
+                  color: "#E8A04A",
+                  fontFamily: "'Noto Serif JP', serif",
+                }}
+              >
+                50名以上が参加
+              </div>
             </div>
           </div>
         </div>
@@ -372,14 +317,11 @@ function ConceptSection() {
   );
 }
 
-// ─── コンテンツカード ─────────────────────────────────────────────────────
+// ─── コンテンツカード（テキストのみ） ─────────────────────────────────────────
 interface ContentCardProps {
   icon: string;
   title: string;
   description: string;
-  images: string[];
-  imageAlts: string[];
-  reverse?: boolean;
   delay?: number;
 }
 
@@ -387,9 +329,6 @@ function ContentCard({
   icon,
   title,
   description,
-  images,
-  imageAlts,
-  reverse = false,
   delay = 0,
 }: ContentCardProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -412,51 +351,31 @@ function ContentCard({
   return (
     <div
       ref={ref}
-      className={`fade-in-up grid md:grid-cols-2 gap-8 md:gap-12 items-center ${
-        reverse ? "md:[&>*:first-child]:order-2" : ""
-      }`}
+      className="fade-in-up max-w-3xl mx-auto p-6 md:p-8 rounded-2xl border"
+      style={{
+        background: "#fff",
+        borderColor: "rgba(26, 46, 59, 0.08)",
+        boxShadow: "0 4px 20px rgba(26,46,59,0.02)"
+      }}
     >
-      {/* テキスト */}
-      <div>
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-3xl">{icon}</span>
-          <h3
-            className="text-2xl font-bold"
-            style={{
-              fontFamily: "'Noto Serif JP', serif",
-              color: "#1A2E3B",
-            }}
-          >
-            {title}
-          </h3>
-        </div>
-        <span className="gold-line" />
-        <p
-          className="text-base leading-relaxed"
-          style={{ color: "#2C2C2C" }}
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-3xl">{icon}</span>
+        <h3
+          className="text-2xl font-bold"
+          style={{
+            fontFamily: "'Noto Serif JP', serif",
+            color: "#1A2E3B",
+          }}
+        >
+          {title}
+        </h3>
       </div>
-
-      {/* 写真グリッド */}
-      <div
-        className={`grid gap-3 ${images.length === 1 ? "grid-cols-1" : images.length === 2 ? "grid-cols-2" : "grid-cols-2"}`}
-      >
-        {images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={imageAlts[i]}
-            className={`w-full rounded-xl object-cover photo-card ${
-              images.length === 3 && i === 2 ? "col-span-2" : ""
-            }`}
-            style={{
-              aspectRatio: images.length === 1 ? "4/3" : "1/1",
-              boxShadow: "0 8px 30px rgba(26,46,59,0.15)",
-            }}
-          />
-        ))}
-      </div>
+      <span className="gold-line" />
+      <p
+        className="text-base leading-relaxed"
+        style={{ color: "#2C2C2C" }}
+        dangerouslySetInnerHTML={{ __html: description }}
+      />
     </div>
   );
 }
@@ -473,9 +392,6 @@ function ContentsSection() {
         "環境と浜辺に優しい行動をすることで、自身の心もリフレッシュ＆マインドリセット！<br/><br/>" +
         "mammababyさんの<strong>可愛いクリアボトル</strong>に海洋プラスチック・マイクロプラスチックのゴミを入れることで、浜辺のマイプラを<strong style='color:#E8A04A'>「見える化」</strong>。SNSで発信しやすくなる仕掛けにもなりました。<br/><br/>" +
         "チル空間を楽しむ前にエコ活動をすることで、マインドをリフレッシュし、その後の宴をより心から楽しめる設計です。",
-      images: [IMAGES.clean1, IMAGES.clean2, IMAGES.clean3],
-      imageAlts: ["ビーチクリーンの様子1", "クリアボトルにゴミを集める様子", "砂浜でビーチクリーンをする参加者"],
-      reverse: false,
     },
     {
       icon: "🏐",
@@ -484,9 +400,6 @@ function ContentsSection() {
         "クリーンの時に集めた材木座海岸の<strong>流木を使ってコートを造った</strong>のがポイント。身体を動かすことで自然と笑顔に。<br/><br/>" +
         "クリーンのチームごとに試合をすることで仲良くなれる設計にし、パスをする時に名前を呼ぶことで<strong style='color:#E8A04A'>なみまちの新メンバーが名前を覚えるチャンス</strong>を増やしました。<br/><br/>" +
         "スポーツを通したハッピーな声掛けで、メンバーの距離感を縮めることができました！（スポーツの力はすごい！！！）",
-      images: [IMAGES.volley1, IMAGES.volley2, IMAGES.volley3],
-      imageAlts: ["ビーチバレーでスパイクする様子", "夕暮れの中でチームが集まる様子", "砂浜でビーチバレーをする様子"],
-      reverse: true,
     },
     {
       icon: "🥤",
@@ -495,9 +408,6 @@ function ContentsSection() {
         "<strong>HiLife Beach House</strong>さんのドリンクでビタミンチャージ。<br/><br/>" +
         "ウェルカムドリンクでビタミンチャージ＆リフレッシュ、現実から非日常世界へ入り込む瞬間を演出。ビーチクリーンとバレーで体を動かした後に2度目のドリンクサービスをし、エネルギーチャージ。<br/><br/>" +
         "フレーバーは<strong style='color:#E8A04A'>マンゴー・パイン・グレープフルーツ・オレンジ</strong>の4種類。皆んなで乾杯（Saluti）することで、仲良くなれる瞬間を作りました。",
-      images: [IMAGES.drinks1, IMAGES.drinks2],
-      imageAlts: ["フルーツの準備の様子", "海辺でドリンクを乾杯する様子"],
-      reverse: false,
     },
     {
       icon: "🎺",
@@ -506,9 +416,6 @@ function ContentsSection() {
         "吹奏楽の<strong>生演奏</strong>で癒される特別な時間。トロンボーン＆トランペット奏者は知り合いの高校生＆NAMIMATIメンバーのご協力によるもの。<br/><br/>" +
         "七夕にちなんだ曲「<strong style='color:#E8A04A'>Twinkle Twinkle Little Star ✨</strong>」の生演奏で、特別感を演出。参加者のリクエストに応えた洋楽も流し、チルいムードを作りました。<br/><br/>" +
         "キャンドルは「<strong>1/fゆらぎ</strong>」と呼ばれる炎の癒し効果を活かし、エモーショナルな空間を確立。",
-      images: [IMAGES.music, IMAGES.candle],
-      imageAlts: ["海辺での金管楽器の生演奏", "砂浜に置かれたキャンドル"],
-      reverse: true,
     },
     {
       icon: "🎁",
@@ -517,9 +424,6 @@ function ContentsSection() {
         "イベントに込めた想い全てをデザイン化した<strong>ステッカーのプレゼント（全4種類）</strong>。<br/><br/>" +
         "モノをすぐに捨てないで大事にしてもらいたいという想いを込めて、ステッカーにある仕掛けを付け、次回のイベント時などにネタバラシする計画も。<br/><br/>" +
         "Instagramのストーリー機能で「<strong style='color:#E8A04A'>La-Vita!/@namimati</strong>」と書き込み、イベントの写真を投稿していただくお願いをすることで、NAMIMATIという学生団体の活動を広める仕掛けにしました。",
-      images: [IMAGES.sticker1, IMAGES.sticker2, IMAGES.stickerDesigns],
-      imageAlts: ["ステッカーを手に持つ様子", "ノベルティとイベントビジュアル", "全4種類のステッカーデザイン"],
-      reverse: false,
     },
   ];
 
@@ -530,14 +434,14 @@ function ContentsSection() {
       style={{ background: "#FBF8F3" }}
     >
       <div className="container">
-        <div ref={headerRef} className="fade-in-up mb-16">
+        <div ref={headerRef} className="fade-in-up mb-16 max-w-3xl mx-auto">
           <SectionHeader en="Contents" ja="イベントのコンテンツ" />
           <p style={{ color: "#555" }}>
             La-Vita!!!は「チル空間の創造」をテーマに、複数のコンテンツを有機的に組み合わせた企画です。
           </p>
         </div>
 
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-8">
           {contents.map((c, i) => (
             <ContentCard key={c.title} {...c} delay={i * 100} />
           ))}
@@ -558,7 +462,7 @@ function SponsorsSection() {
       style={{ background: "#1A2E3B" }}
     >
       <div className="container">
-        <div ref={ref} className="fade-in-up">
+        <div ref={ref} className="fade-in-up max-w-4xl mx-auto">
           <SectionHeader en="Sponsors" ja="ご協賛企業" light />
           <p className="mb-12" style={{ color: "rgba(251,248,243,0.7)" }}>
             今回のLa-Vita!!!は、2社の企業様のご協賛により実現しました。
@@ -568,7 +472,7 @@ function SponsorsSection() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* mammababy */}
             <div
-              className="rounded-2xl p-8 photo-card"
+              className="rounded-2xl p-8"
               style={{
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid rgba(232,160,74,0.3)",
@@ -600,23 +504,8 @@ function SponsorsSection() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <img
-                  src={IMAGES.mammababyProduct}
-                  alt="mammababy UV MILK製品"
-                  className="w-full rounded-xl object-cover"
-                  style={{ aspectRatio: "4/3" }}
-                />
-                <img
-                  src={IMAGES.sponsorUv}
-                  alt="mammababy UV MILKの配布の様子"
-                  className="w-full rounded-xl object-cover"
-                  style={{ aspectRatio: "4/3" }}
-                />
-              </div>
-
               <div
-                className="rounded-xl p-4"
+                className="rounded-xl p-4 mb-4"
                 style={{ background: "rgba(255,255,255,0.05)" }}
               >
                 <p
@@ -638,7 +527,7 @@ function SponsorsSection() {
               </div>
 
               <p
-                className="mt-4 text-sm leading-relaxed"
+                className="text-sm leading-relaxed"
                 style={{ color: "rgba(251,248,243,0.65)" }}
               >
                 高価な商品でもあるため、mammababyさんに信頼していただけたからこそご協賛いただけました。
@@ -648,7 +537,7 @@ function SponsorsSection() {
 
             {/* HiLife Beach House */}
             <div
-              className="rounded-2xl p-8 photo-card"
+              className="rounded-2xl p-8"
               style={{
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid rgba(91,155,173,0.3)",
@@ -680,17 +569,8 @@ function SponsorsSection() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 mb-6">
-                <img
-                  src={IMAGES.sponsorDrinks}
-                  alt="HiLife Beach Houseのドリンク"
-                  className="w-full rounded-xl object-cover"
-                  style={{ aspectRatio: "16/7" }}
-                />
-              </div>
-
               <div
-                className="rounded-xl p-4"
+                className="rounded-xl p-4 mb-4"
                 style={{ background: "rgba(255,255,255,0.05)" }}
               >
                 <p
@@ -708,7 +588,7 @@ function SponsorsSection() {
               </div>
 
               <p
-                className="mt-4 text-sm leading-relaxed"
+                className="text-sm leading-relaxed"
                 style={{ color: "rgba(251,248,243,0.65)" }}
               >
                 HiLifeさんからも「NAMIMATIの印象が良い」とお褒めの言葉をいただきました。
@@ -744,9 +624,9 @@ function ReviewSection() {
       body: "新入生にもなみまちをメンションしたストーリーを投稿してもらうことで、学生団体の新歓という側面でも良い効果があった。",
     },
     {
-      icon: "📈",
-      title: "集客が想定以上",
-      body: "協賛をつけてボリュームのある企画にできたため、集客率も上がった。想定人数を上回る50名以上が参加。",
+      icon: "📸",
+      title: "アルバムの写真が豊富",
+      body: "イベント後に共有されたアルバムの写真の量が多く、メンバー全員の楽しそうな表情がたくさん記録されていた。",
     },
     {
       icon: "🤝",
@@ -776,7 +656,7 @@ function ReviewSection() {
     {
       icon: "⏱️",
       title: "タイムテーブルが曖昧",
-      body: "当日の段取りが少し雑になってしまった。イベント中の待ち時間など、間延びしている場面が多かった。",
+      body: "当当日の段取りが少し雑になってしまった。イベント中の待ち時間など、間延びしている場面が多かった。",
       lesson: "→ タイムテーブルをボードなどに書いておく。声を出せる企画メンバーの必要性 or マイクなど。",
     },
     {
@@ -845,7 +725,7 @@ function ReviewSection() {
               {goodPoints.map((p, i) => (
                 <div
                   key={i}
-                  className="rounded-2xl p-6 photo-card"
+                  className="rounded-2xl p-6"
                   style={{
                     background: "#fff",
                     border: "1px solid rgba(232,160,74,0.2)",
@@ -876,7 +756,7 @@ function ReviewSection() {
               {issuePoints.map((p, i) => (
                 <div
                   key={i}
-                  className="rounded-2xl p-6 photo-card"
+                  className="rounded-2xl p-6"
                   style={{
                     background: "#fff",
                     border: "1px solid rgba(26,46,59,0.1)",
@@ -972,7 +852,7 @@ function VoicesSection() {
             {voices.map((v, i) => (
               <div
                 key={i}
-                className="rounded-2xl p-6 photo-card"
+                className="rounded-2xl p-6"
                 style={{
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid rgba(232,160,74,0.15)",
@@ -1083,7 +963,6 @@ function Footer() {
     >
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <img src={IMAGES.logo} alt="La-Vita logo" className="w-8 h-8 opacity-80" />
           <div>
             <p
               className="font-bold text-sm"
@@ -1098,9 +977,6 @@ function Footer() {
         </div>
 
         <div className="text-center md:text-right">
-          <p className="text-xs" style={{ color: "rgba(251,248,243,0.4)" }}>
-            
-          </p>
           <p className="text-xs mt-1" style={{ color: "rgba(251,248,243,0.3)" }}>
             © 2024 NAMIMATI. All rights reserved.
           </p>
@@ -1126,4 +1002,3 @@ export default function Home() {
     </div>
   );
 }
-
